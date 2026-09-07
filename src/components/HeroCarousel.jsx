@@ -76,7 +76,7 @@ function HeroCarousel() {
       </div>
 
       {/* Indicators */}
-      <div className="carousel-indicators">
+      {/* <div className="carousel-indicators">
         {slides.map((slide, index) => (
           <button
             key={slide.id}
@@ -87,7 +87,7 @@ function HeroCarousel() {
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
-      </div>
+      </div> */}
 
     </div>
   );
