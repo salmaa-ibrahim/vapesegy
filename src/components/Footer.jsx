@@ -5,10 +5,6 @@ import FooterAccordion from './FooterAccordion.jsx';
 import footerSections from '../data/footer.js';
 import config from '../data/config.js';
 import './Footer.css';
-import instagramIcon from '/images/icons/instagram_icon.png';
-import facebookIcon from '/images/icons/facebook_icon.png';
-import whatsappIcon from '/images/icons/whatsapp_icon.png';
-import phoneIcon from '/images/icons/call_icon.svg';
 
 function Footer() {
   const [openSection, setOpenSection] = useState(null);
@@ -30,7 +26,7 @@ function Footer() {
               className="social-icon"
               aria-label="Instagram"
             >
-              <img src={instagramIcon} alt="Instagram" />
+              <img src="/images/icons/instagram_icon.png" alt="Instagram" />
             </a>
             <a 
               href={config.social.facebook} 
@@ -39,7 +35,7 @@ function Footer() {
               className="social-icon"
               aria-label="Facebook"
             >
-              <img src={facebookIcon} alt="Facebook" />
+              <img src="/images/icons/facebook_icon.png" alt="Facebook" />
             </a>
             <a 
               href={config.social.whatsapp} 
@@ -48,14 +44,14 @@ function Footer() {
               className="social-icon"
               aria-label="WhatsApp"
             >
-              <img src={whatsappIcon} alt="WhatsApp" />
+              <img src="/images/icons/whatsapp_icon.png" alt="WhatsApp" />
             </a>
             <a 
               href={config.social.phone} 
               className="social-icon"
               aria-label="Phone"
             >
-              <img src={phoneIcon} alt="Phone" />
+              <img src="/images/icons/call_icon.svg" alt="Phone" />
             </a>
           </div>
         </div>
