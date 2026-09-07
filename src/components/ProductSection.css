@@ -1,0 +1,26 @@
+/* src/components/ProductSection.css */
+.product-section {
+  background: var(--white);
+  padding: 0 0 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.product-banner {
+  padding: 0 12px;
+  margin: 12px 0 8px;
+}
+
+.banner-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+@media (min-width: 768px) {
+  .product-banner {
+    padding: 0 24px;
+  }
+}

@@ -1,0 +1,94 @@
+.product-carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 10px 0 50px 0; /* مساحة للنقاط */
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  bottom: 0;
+  margin-top: 30px;
+}
+
+.carousel-viewport {
+  overflow: hidden;
+  width: 100%;
+  touch-action: none;
+  cursor: grab;
+}
+
+.carousel-viewport:active {
+  cursor: grabbing;
+}
+
+.products-row {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  will-change: transform;
+  width: 100%;
+}
+
+.product-item {
+  flex-shrink: 0;
+  padding: 0 8px;
+  box-sizing: border-box;
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: #ddd;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.indicator.active {
+  background: #333;
+  transform: scale(1.2);
+}
+
+.indicator:hover {
+  background: #999;
+}
+
+/* تحسينات التجاوب مع الشاشات المختلفة */
+@media (max-width: 1200px) {
+  .product-item {
+    padding: 0 6px;
+  }
+}
+
+@media (max-width: 992px) {
+  .product-item {
+    padding: 0 5px;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-carousel {
+    padding: 5px 0;
+  }
+  
+  .product-item {
+    padding: 0 4px;
+  }
+  
+  .indicator {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-item {
+    padding: 0 3px;
+  }
+}

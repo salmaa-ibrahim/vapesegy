@@ -1,0 +1,48 @@
+/* src/components/CategoriesSection.css */
+.categories-section {
+  background: var(--white);
+  padding: 0 0 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-header {
+  background: var(--primary-red);
+  padding: 14px 0;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  color: var(--white);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  padding: 0 12px;
+}
+
+@media (min-width: 768px) {
+  .categories-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 0 24px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .categories-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

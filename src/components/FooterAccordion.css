@@ -1,0 +1,60 @@
+/* src/components/FooterAccordion.css */
+.footer-accordion {
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.accordion-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.accordion-title {
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.accordion-icon {
+  color: var(--white);
+  font-size: 22px;
+  font-weight: 300;
+}
+
+.accordion-content {
+  padding: 0 0 12px;
+  margin: 0;
+  list-style: none;
+}
+
+.accordion-item {
+  padding: 6px 0;
+}
+
+.accordion-link {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 400;
+  transition: color 0.2s ease;
+}
+
+.accordion-link:hover {
+  color: var(--white);
+}
+
+@media (min-width: 768px) {
+  .accordion-title {
+    font-size: 18px;
+  }
+
+  .accordion-link {
+    font-size: 16px;
+  }
+}
