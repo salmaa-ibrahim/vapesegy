@@ -44,7 +44,7 @@ function Footer() {
               className="social-icon"
               aria-label="WhatsApp"
             >
-              <img src="/images/icons/whatsapp_icon.png" alt="WhatsApp" />
+              <img src="\images\icons\Whatsapp_icon.png" alt="WhatsApp" />
             </a>
             <a 
               href={config.social.phone} 

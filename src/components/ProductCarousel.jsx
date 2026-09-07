@@ -1,180 +1,119 @@
-// src/components/ProductCarousel.jsx
-import React, { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ProductCard from './ProductCard.jsx';
 import './ProductCarousel.css';
 
-function ProductCarousel({ products }) {
+function ProductCarousel({ products = [] }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [touchStartX, setTouchStartX] = useState(0);
-  const [touchEndX, setTouchEndX] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
   const [itemsPerView, setItemsPerView] = useState(5);
-  const intervalRef = useRef(null);
+  const [isPaused, setIsPaused] = useState(false);
 
-  if (!products || products.length === 0) {
-    return null;
-  }
+  const startX = useRef(0);
+  const isDragging = useRef(false);
+  const didDrag = useRef(false);
 
-  // تحديد عدد المنتجات المعروضة حسب حجم الشاشة
-  const updateItemsPerView = () => {
-    const width = window.innerWidth;
-    if (width >= 1200) {
-      setItemsPerView(5);
-    } else if (width >= 992) {
-      setItemsPerView(4);
-    } else if (width >= 768) {
-      setItemsPerView(3);
-    } else {
-      setItemsPerView(2);
-    }
-  };
-
-  // تحديث عدد المنتجات عند تغيير حجم الشاشة
   useEffect(() => {
+    const updateItemsPerView = () => {
+      const width = window.innerWidth;
+      setItemsPerView(width >= 1200 ? 5 : width >= 992 ? 4 : width >= 768 ? 3 : 2);
+    };
+
     updateItemsPerView();
     window.addEventListener('resize', updateItemsPerView);
+
     return () => window.removeEventListener('resize', updateItemsPerView);
   }, []);
-
-  // إعادة تعيين المؤشر الحالي إذا تغير عدد المنتجات المعروضة
-  useEffect(() => {
-    const totalSlides = Math.ceil(products.length / itemsPerView);
-    const maxIndex = Math.max(0, totalSlides - 1);
-    if (currentIndex > maxIndex) {
-      setCurrentIndex(maxIndex);
-    }
-  }, [itemsPerView, products.length, currentIndex]);
 
   const totalSlides = Math.ceil(products.length / itemsPerView);
   const maxIndex = Math.max(0, totalSlides - 1);
 
-  const goToSlide = (index) => {
-    let newIndex = index;
-    if (newIndex < 0) newIndex = maxIndex;
-    if (newIndex > maxIndex) newIndex = 0;
-    setCurrentIndex(newIndex);
-  };
-
-  // التمرير التلقائي
   useEffect(() => {
-    if (isPaused) return;
+    setCurrentIndex((index) => Math.min(index, maxIndex));
+  }, [maxIndex]);
 
-    intervalRef.current = setInterval(() => {
-      goToSlide(currentIndex + 1);
-    }, 2000);
+  const goToSlide = (index) => {
+    setCurrentIndex(() => {
+      if (index < 0) return maxIndex;
+      if (index > maxIndex) return 0;
+      return index;
+    });
+  };
 
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, [currentIndex, isPaused]);
+  useEffect(() => {
+    if (isPaused || maxIndex === 0) return undefined;
 
-  // إيقاف التمرير التلقائي عند التفاعل مع الكاروسيل
-  const handleInteractionStart = () => {
+    const timer = window.setInterval(() => {
+      setCurrentIndex((index) => (index >= maxIndex ? 0 : index + 1));
+    }, 3500);
+
+    return () => window.clearInterval(timer);
+  }, [isPaused, maxIndex]);
+
+  const isInteractiveElement = (element) =>
+    element.closest('button, a, input, select, textarea, label');
+
+  const handlePointerDown = (event) => {
+    // لا نتعامل مع زر الإضافة أو الروابط كسحب.
+    if (isInteractiveElement(event.target)) return;
+
+    startX.current = event.clientX;
+    isDragging.current = true;
+    didDrag.current = false;
     setIsPaused(true);
+    event.currentTarget.setPointerCapture?.(event.pointerId);
   };
 
-  const handleInteractionEnd = () => {
+  const handlePointerMove = (event) => {
+    if (!isDragging.current) return;
+
+    if (Math.abs(event.clientX - startX.current) > 8) {
+      didDrag.current = true;
+    }
+  };
+
+  const handlePointerUp = (event) => {
+    if (!isDragging.current) return;
+
+    const distance = event.clientX - startX.current;
+    isDragging.current = false;
     setIsPaused(false);
-  };
 
-  // التعامل مع اللمس
-  const handleTouchStart = (e) => {
-    setTouchStartX(e.touches[0].clientX);
-    setIsDragging(true);
-    handleInteractionStart();
-  };
-
-  const handleTouchMove = (e) => {
-    setTouchEndX(e.touches[0].clientX);
-  };
-
-  const handleTouchEnd = () => {
-    setIsDragging(false);
-    const threshold = 50;
-    if (touchStartX - touchEndX > threshold) {
-      goToSlide(currentIndex + 1);
-    } else if (touchEndX - touchStartX > threshold) {
-      goToSlide(currentIndex - 1);
-    }
-    handleInteractionEnd();
-  };
-
-  // التعامل مع الماوس
-  const handleMouseDown = (e) => {
-    setTouchStartX(e.clientX);
-    setIsDragging(true);
-    handleInteractionStart();
-  };
-
-  const handleMouseMove = (e) => {
-    if (!isDragging) return;
-    setTouchEndX(e.clientX);
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-    const threshold = 50;
-    if (touchStartX - touchEndX > threshold) {
-      goToSlide(currentIndex + 1);
-    } else if (touchEndX - touchStartX > threshold) {
-      goToSlide(currentIndex - 1);
-    }
-    handleInteractionEnd();
-  };
-
-  const handleMouseLeave = () => {
-    if (isDragging) {
-      setIsDragging(false);
-      handleInteractionEnd();
+    if (Math.abs(distance) > 50) {
+      goToSlide(distance < 0 ? currentIndex + 1 : currentIndex - 1);
     }
   };
 
-  const getVisibleProducts = () => {
-    const start = currentIndex * itemsPerView;
-    const end = Math.min(start + itemsPerView, products.length);
-    return products.slice(start, end);
-  };
-
-  const visibleProducts = getVisibleProducts();
-
-  // حساب عرض المنتج بناءً على عدد المنتجات المعروضة
-  const productWidth = `${100 / itemsPerView}%`;
+  if (!products.length) return null;
 
   return (
-    <div 
+    <div
       className="product-carousel"
-      onMouseEnter={handleInteractionStart}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => {
+        isDragging.current = false;
+        setIsPaused(false);
+      }}
     >
-      <div 
+      <div
         className="carousel-viewport"
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={() => {
+          isDragging.current = false;
+          setIsPaused(false);
+        }}
       >
-        <div 
+        <div
           className="products-row"
           style={{
             transform: `translateX(-${currentIndex * 100}%)`,
-            transition: isDragging ? 'none' : 'transform 0.5s ease-in-out',
           }}
         >
           {products.map((product) => (
-            <div 
-              key={product.id} 
+            <div
+              key={product.id}
               className="product-item"
-              style={{ 
-                width: productWidth,
-                flexShrink: 0,
-                padding: '0 8px',
-                boxSizing: 'border-box'
-              }}
+              style={{ width: `${100 / itemsPerView}%` }}
             >
               <ProductCard product={product} />
             </div>
@@ -182,18 +121,14 @@ function ProductCarousel({ products }) {
         </div>
       </div>
 
-      {/* مؤشرات التقدم */}
       {totalSlides > 1 && (
         <div className="carousel-indicators">
-          {Array.from({ length: totalSlides }).map((_, index) => (
+          {Array.from({ length: totalSlides }, (_, index) => (
             <button
               key={index}
+              type="button"
               className={`indicator ${index === currentIndex ? 'active' : ''}`}
-              onClick={() => {
-                handleInteractionStart();
-                goToSlide(index);
-                setTimeout(handleInteractionEnd, 100);
-              }}
+              onClick={() => goToSlide(index)}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}
