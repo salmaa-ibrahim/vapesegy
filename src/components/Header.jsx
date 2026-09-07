@@ -39,13 +39,11 @@ function Header() {
           </button>
 
           <Link to="/" className="logo">
-            {/* <span className="logo-icon">🌫️</span> */}
-            {/* <span className="logo-text">Vapesegy</span> */}
             <img className="logo-image" src={vapesegylogo} alt="Vapesegy Logo" />
           </Link>
 
           <button className="cart-btn" onClick={openCart} aria-label="Cart">
-            <span className="cart-icon">🛒</span>
+            <img  className="cart-icon" src="/images/icons/cart_icon.png" alt="Cart" />
             {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
           </button>
         </div>
