@@ -5,10 +5,10 @@ import FooterAccordion from './FooterAccordion.jsx';
 import footerSections from '../data/footer.js';
 import config from '../data/config.js';
 import './Footer.css';
-import instagramIcon from '../../public/images/icons/instagram_icon.png';
-import facebookIcon from '../../public/images/icons/facebook_icon.png';
-import whatsappIcon from '../../public/images/icons/whatsapp_icon.png';
-import phoneIcon from '../../public/images/icons/call_icon.svg';
+import instagramIcon from '/images/icons/instagram_icon.png';
+import facebookIcon from '/images/icons/facebook_icon.png';
+import whatsappIcon from '/images/icons/whatsapp_icon.png';
+import phoneIcon from '/images/icons/call_icon.svg';
 
 function Footer() {
   const [openSection, setOpenSection] = useState(null);
