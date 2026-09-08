@@ -45,7 +45,8 @@
 .category-products {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+  gap: 45px;
+  row-gap: 50px;
 }
 
 .no-products {

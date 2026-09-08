@@ -15,9 +15,9 @@ function ContactSection() {
 
   return (
     <section className="contact-section">
-      <div className="section-header">
+      {/* <div className="section-header">
         <h2 className="section-title">CONTACT</h2>
-      </div>
+      </div> */}
 
       <div className="contact-buttons">
         <button className="contact-btn whatsapp-btn" onClick={handleWhatsApp}>

@@ -41,6 +41,13 @@ const categories = [
     image: '/images/categories/elfbar.jpg',
     slug: 'elfbar',
     description: 'ELFBAR collection'
+  },
+  {
+    id: 'vtouch',
+    name: 'V-TOUCH Smart Vape',
+    image: '/images/categories/vtouch.jpg',
+    slug: 'vtouch',
+    description: 'VTOUCH collection'
   }
 ];
 

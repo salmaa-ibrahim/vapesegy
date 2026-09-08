@@ -5,9 +5,9 @@ import './DeliverySection.css';
 function DeliverySection() {
   return (
     <section className="delivery-section">
-      <div className="section-header">
+      {/* <div className="section-header">
         <h2 className="section-title">DELIVERY</h2>
-      </div>
+      </div> */}
       
       <div className="delivery-content">
         <img 
