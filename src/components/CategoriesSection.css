@@ -91,6 +91,18 @@
   }
 }
 
+@media (max-width: 425px) {
+  .animate-charcter {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 375px) {
+  .animate-charcter {
+    font-size: 25px;
+  }
+}
+
 @media (min-width: 1024px) {
   .categories-grid {
     grid-template-columns: repeat(5, 1fr);
