@@ -28,7 +28,7 @@
 
 .product-item {
   flex: 0 0 auto;
-  padding: 0 8px;
+  padding: 0 15px;
   box-sizing: border-box;
 }
 
@@ -73,7 +73,7 @@
 
 @media (max-width: 768px) {
   .product-item {
-    padding: 0 4px;
+    padding: 0 15px;
   }
 
   .indicator {
@@ -84,6 +84,6 @@
 
 @media (max-width: 480px) {
   .product-item {
-    padding: 0 3px;
+    padding: 0 15px;
   }
 }

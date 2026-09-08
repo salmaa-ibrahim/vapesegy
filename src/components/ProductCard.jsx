@@ -38,7 +38,7 @@ function ProductCard({ product }) {
         </div>
         
         <h3 className="product-name">{product.name}</h3>
-        <p className="product-description">{product.description}</p>
+        <p className="product-flavor">{product.flavor}</p>
         <p className="product-price">LE {product.price.toFixed(2)}</p>
       </Link>
       

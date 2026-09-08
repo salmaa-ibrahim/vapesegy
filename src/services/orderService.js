@@ -1,38 +1,34 @@
 // src/services/orderService.js
+import { supabase } from '../lib/supabase.js';
+
 class OrderService {
-  constructor() {
-    this.orders = [];
-  }
+  async createOrder(orderData) {
+    const { data, error } = await supabase
+      .from('orders')
+      .insert([
+        {
+          customer_name: orderData.customerName,
+          phone: orderData.phone,
+          whatsapp: orderData.whatsapp,
+          address: orderData.address,
+          address_details: orderData.addressDetails,
+          items: orderData.items,
+          total: orderData.total,
+          status: 'pending',
+        },
+      ])
+      // .select()
+      // .single();
 
-  createOrder(orderData) {
-    const order = {
-      id: Date.now().toString(),
-      ...orderData,
-      status: 'pending',
-      createdAt: new Date().toISOString()
-    };
-    this.orders.push(order);
-    return order;
-  }
+    if (error) {
+      console.error('Error creating order:', error);
+      throw error;
+    }
 
-  getOrders() {
-    return this.orders;
+    return data;
   }
-
-  getOrderById(id) {
-    return this.orders.find(order => order.id === id);
-  }
-
-  // Future: Connect to Supabase
-  // async saveOrderToDB(orderData) {
-  //   const { data, error } = await supabase
-  //     .from('orders')
-  //     .insert([orderData])
-  //     .select();
-  //   if (error) throw error;
-  //   return data;
-  // }
 }
 
 const orderService = new OrderService();
+
 export default orderService;

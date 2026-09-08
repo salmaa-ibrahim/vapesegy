@@ -65,11 +65,10 @@ function CartDrawer({ isOpen, onClose }) {
 
                   <div className="drawer-item-details">
                     <h4 className="drawer-item-name">{item.name}</h4>
-                    <p className="drawer-item-flavor">{item.description}</p>
+                    <p className="cart-item-flavor">{item.flavor}</p>{" "}
                     <p className="drawer-item-price">
                       LE {item.price.toFixed(2)}
                     </p>
-
                     <div className="drawer-item-actions">
                       <div className="drawer-quantity-controls">
                         <button

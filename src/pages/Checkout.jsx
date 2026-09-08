@@ -492,6 +492,7 @@ function Checkout() {
       items: cart.map((item) => ({
         productId: item.id,
         name: item.name,
+        flavor: item.flavor,
         quantity: item.quantity,
         price: item.price,
       })),
