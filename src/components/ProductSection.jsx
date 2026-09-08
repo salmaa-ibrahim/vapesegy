@@ -32,17 +32,17 @@ function ProductSection({ section }) {
 
   return (
     <section className="product-section">
-      {/* <div className="section-header">
+      <div className="section-header">
         <h2 className="section-title">{section.title}</h2>
-      </div> */}
+      </div>
 
-      <div className="container">
+      {/* <div className="container">
         <div className="row">
           <div className="col-md-12 text-center">
-            <h3 className="animate-charcter"> {section.title}</h3>
+            <h3 className="animate-charcterr"> {section.title}</h3>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {section.banner && (
         <div className="product-banner">
