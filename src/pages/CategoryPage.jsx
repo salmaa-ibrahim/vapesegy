@@ -21,7 +21,8 @@ function CategoryPage() {
 
       const categoryProducts = allProducts.filter(
         (product) =>
-          product.category.toLowerCase() === category.name.toLowerCase(),
+        product.category.trim().toLowerCase() ===
+          category.name.trim().toLowerCase(),
       );
 
       setProducts(categoryProducts);

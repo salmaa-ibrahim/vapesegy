@@ -14,7 +14,7 @@ const categories = [
     slug: 'vozol-star',
     description: 'Vozol Star with 40k puffs'
   },
-  {
+ {
     id: 'vozol-hookah',
     name: 'Vozol Hookah 40k puffs',
     image: '/images/categories/hookah.jpg',
@@ -27,6 +27,13 @@ const categories = [
     image: '/images/categories/aivono.jpg',
     slug: 'aivono-zero',
     description: 'Zero nicotine Aivono with 20k puffs'
+  },
+   {
+    id: 'vtouch',
+    name: 'V-TOUCH Smart Vape',
+    image: '/images/categories/vtouch.jpg',
+    slug: 'vtouch',
+    description: 'VTOUCH collection'
   },
   {
     id: 'the-crystal',
@@ -43,11 +50,11 @@ const categories = [
     description: 'ELFBAR collection'
   },
   {
-    id: 'vtouch',
-    name: 'V-TOUCH Smart Vape',
-    image: '/images/categories/vtouch.jpg',
-    slug: 'vtouch',
-    description: 'VTOUCH collection'
+    id: 'dzrt',
+    name: 'DZRT',
+    image: '/images/categories/dzrt.jpeg',
+    slug: 'dzrt',
+    description: 'DZRT collection'
   }
 ];
 

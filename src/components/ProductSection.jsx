@@ -1,9 +1,9 @@
 // src/components/ProductSection.jsx
-import React, { useEffect, useState } from 'react';
-import ProductCarousel from './ProductCarousel.jsx';
-import productService from '../services/productService.js';
-import categoryService from '../services/categoryService.js';
-import './ProductSection.css';
+import React, { useEffect, useState } from "react";
+import ProductCarousel from "./ProductCarousel.jsx";
+import productService from "../services/productService.js";
+import categoryService from "../services/categoryService.js";
+import "./ProductSection.css";
 
 function ProductSection({ section }) {
   const [products, setProducts] = useState([]);
@@ -20,8 +20,9 @@ function ProductSection({ section }) {
       }
 
       const sectionProducts = allProducts.filter(
-        product =>
-          product.category.toLowerCase() === category.name.toLowerCase()
+        (product) =>
+          product.category.trim().toLowerCase() ===
+          category.name.trim().toLowerCase(),
       );
 
       setProducts(sectionProducts);
