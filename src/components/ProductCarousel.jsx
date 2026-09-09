@@ -325,7 +325,7 @@ function ProductCarousel({ products = [] }) {
 
     const timer = window.setInterval(() => {
       setCurrentIndex((index) => (index >= maxIndex ? 0 : index + 1));
-    }, 3000);
+    }, 5000);
 
     return () => window.clearInterval(timer);
   }, [maxIndex]);
