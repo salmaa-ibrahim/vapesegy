@@ -87,3 +87,18 @@
     padding: 0 15px;
   }
 }
+
+
+.carousel-viewport {
+  overflow: hidden;
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+.carousel-viewport:active {
+  cursor: grabbing;
+}
+
+.carousel-indicators {
+  pointer-events: none;
+}
