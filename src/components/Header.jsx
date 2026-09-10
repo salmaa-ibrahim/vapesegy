@@ -62,10 +62,12 @@ function Header() {
             <li className="menu-categories-title">Categories</li>
             <li><Link to="/category/vozol-gear" onClick={closeMenu}>Vozol Gear 50k</Link></li>
             <li><Link to="/category/vozol-star" onClick={closeMenu}>Vozol Star 40k</Link></li>
+            <li><Link to="/category/vozol-hookah" onClick={closeMenu}>Vozol Hookah 40k</Link></li>
             <li><Link to="/category/aivono-zero" onClick={closeMenu}>Aivono Zero Nicotine</Link></li>
+            <li><Link to="/category/vtouch" onClick={closeMenu}>V-Touch Smart Vape</Link></li>
             <li><Link to="/category/the-crystal" onClick={closeMenu}>THE CRYSTAL</Link></li>
             <li><Link to="/category/elfbar" onClick={closeMenu}>ELFBAR</Link></li>
-            <li><Link to="/cart" onClick={closeMenu}>Cart</Link></li>
+            <li><Link to="/category/dzrt" onClick={closeMenu}>DZRT</Link></li>
             <li><Link to="/checkout" onClick={closeMenu}>Checkout</Link></li>
           </ul>
         </nav>
