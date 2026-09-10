@@ -7,6 +7,9 @@ import "./CartDrawer.css";
 function CartDrawer({ isOpen, onClose }) {
   const { cart, removeFromCart, updateQuantity, cartTotal } = useCart();
 
+  const shippingFee = 100;
+  const orderTotal = cartTotal + shippingFee;
+
   // Log cart changes for debugging
   useEffect(() => {
     if (isOpen) {
@@ -108,12 +111,14 @@ function CartDrawer({ isOpen, onClose }) {
             <div className="cart-drawer-footer">
               <div className="drawer-total">
                 <span className="drawer-total-label">Shipping:</span>
-                <span className="drawer-total-price">FREE </span>
+                <span className="drawer-total-price">
+                  LE {shippingFee.toFixed(2)}
+                </span>
               </div>
               <div className="drawer-total">
                 <span className="drawer-total-label">Total:</span>
                 <span className="drawer-total-price">
-                  LE {cartTotal.toFixed(2)}
+                  LE {orderTotal.toFixed(2)}
                 </span>
               </div>
 

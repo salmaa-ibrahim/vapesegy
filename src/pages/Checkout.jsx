@@ -1,5 +1,6 @@
 // src/pages/Checkout.jsx
 import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
 import { useNavigate, Link } from "react-router-dom";
 import useCart from "../hooks/useCart.js";
 import orderService from "../services/orderService.js";
@@ -423,6 +424,10 @@ const governoratesData = {
 
 function Checkout() {
   const { cart, cartTotal, clearCart } = useCart();
+
+  const shippingFee = 100;
+  const orderTotal = cartTotal + shippingFee;
+
   const navigate = useNavigate();
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -496,13 +501,59 @@ function Checkout() {
         quantity: item.quantity,
         price: item.price,
       })),
-      total: cartTotal,
+      subtotal: cartTotal,
+      shipping_fee: shippingFee,
+      total: orderTotal,
       status: "pending",
     };
 
     try {
       // Create the order first
       await orderService.createOrder(order);
+
+      const orderDetails = cart
+        .map(
+          (item) => `
+  <tr>
+    <td>${item.name}</td>
+    <td>${item.flavor || "-"}</td>
+    <td>${item.quantity}</td>
+    <td>LE ${(item.price * item.quantity).toFixed(2)}</td>
+  </tr>
+`,
+        )
+        .join("");
+
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          customer_name: formData.customerName,
+          phone: formData.phone,
+          whatsapp: formData.whatsapp || "-",
+          governorate: formData.governorate,
+          address: fullAddress,
+          order_details: `
+      <table style="width:100%; border-collapse:collapse;">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Flavor</th>
+            <th>Qty</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${orderDetails}
+        </tbody>
+      </table>
+    `,
+          subtotal: cartTotal.toFixed(2),
+          shipping_fee: shippingFee.toFixed(2),
+          total: orderTotal.toFixed(2),
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      );
 
       // Show success message
       setShowSuccessMessage(true);
@@ -701,11 +752,11 @@ function Checkout() {
               ))}
               <div className="summary-shipping">
                 <span>Shipping</span>
-                <span>FREE</span>
+                <span>100.00</span>
               </div>
               <div className="summary-total">
                 <span>Total</span>
-                <span className="total-price">LE {cartTotal.toFixed(2)}</span>
+                <span className="total-price">LE {orderTotal.toFixed(2)}</span>
               </div>
             </div>
           </div>

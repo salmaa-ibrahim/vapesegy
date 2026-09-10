@@ -7,6 +7,10 @@ import "./Cart.css";
 function Cart() {
   const { cart, removeFromCart, updateQuantity, cartTotal, clearCart } =
     useCart();
+
+  const shippingFee = 100;
+  const orderTotal = cartTotal + shippingFee;
+
   const navigate = useNavigate();
 
   if (cart.length === 0) {
@@ -76,8 +80,18 @@ function Cart() {
 
       <div className="cart-summary">
         <div className="cart-total">
-          <span>Total:</span>
+          <span>Subtotal:</span>
           <span className="total-price">LE {cartTotal.toFixed(2)}</span>
+        </div>
+
+        <div className="cart-total">
+          <span>Shipping:</span>
+          <span className="total-price">LE {shippingFee.toFixed(2)}</span>
+        </div>
+
+        <div className="cart-total">
+          <span>Total:</span>
+          <span className="total-price">LE {orderTotal.toFixed(2)}</span>
         </div>
 
         <button className="checkout-btn" onClick={() => navigate("/checkout")}>
