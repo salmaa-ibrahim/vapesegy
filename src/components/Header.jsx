@@ -236,7 +236,8 @@ function Header() {
           onClick={(e) => e.stopPropagation()}
         >
           <div className="menu-header">
-            <span className="menu-logo">Vapesegy</span>
+            <img className="logo-image" src={vapesegylogo} alt="Vapesegy Logo" />
+            {/* <span className="menu-logo">Vapesegy</span> */}
             <button className="menu-close" onClick={closeMenu}>✕</button>
           </div>
           <ul className="menu-items">
