@@ -18,6 +18,10 @@ function CategoriesSection() {
           </div>
         </div>
       </div>
+
+      <div className="dispoable-section">
+        <p>Disposable vapes</p>
+      </div>
       
       <div className="categories-grid">
         {categories.map((category) => (

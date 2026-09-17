@@ -9,6 +9,21 @@
   justify-content: center; */
 }
 
+.dispoable-section {
+  padding: 10px 0;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.dispoable-section p {
+  color : gray;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
 .section-header {
   background: var(--primary-red);
   padding: 14px 0;

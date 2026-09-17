@@ -6,7 +6,7 @@ function AnnouncementBar() {
   return (
     <div className="announcement-bar">
       <p className="announcement-text">
-        اسرع شحن في مصر - توصيل في نفس اليوم داخل القاهرة
+        اسرع شحن في مصر - توصيل في نفس اليوم داخل القاهرة - Disposable vapes
       </p>
     </div>
   );

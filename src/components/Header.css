@@ -36,7 +36,7 @@
 }
 
 .logo-image{
-  width: 120px;
+  width: 100px;
   height: auto;
   object-fit: contain;
 }
@@ -185,9 +185,46 @@
   border-bottom: none !important;
 }
 
+.menu-contact-title {
+  font-size: 13px;
+  color: var(--secondary-text);
+  font-weight: 600;
+  padding: 16px 0 8px !important;
+  border-bottom: none !important;
+}
+
+.menu-contact-icon {
+  width: 25px;
+  height: 25px;
+}
+
+.menu-contact-btn{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 12px 0;
+  text-align: left;
+}
+
+
 @media (min-width: 768px) {
   .header {
     padding: 16px 32px;
+  }
+  .logo-image{
+    width: 70px;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .logo-image{
+    width: 50px;
   }
 
 }

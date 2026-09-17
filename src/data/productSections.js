@@ -57,10 +57,10 @@ const productSections = [
     active: true
   },
   {
-    id: 'dzrt',
-    title: 'DZRT',
+    id: 'Nicotine pouches',
+    title: 'Nicotine pouches',
     banner: '/images/banners/dzrt-banner.jpeg',
-    categoryId: 'dzrt',
+    categoryId: 'nicotine-pouches',
     displayOrder: 8,
     active: true
   }

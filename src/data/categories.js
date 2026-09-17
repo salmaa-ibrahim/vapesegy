@@ -50,10 +50,10 @@ const categories = [
     description: 'ELFBAR collection'
   },
   {
-    id: 'dzrt',
-    name: 'DZRT',
+    id: 'Nicotine pouches',
+    name: 'Nicotine pouches',
     image: '/images/categories/dzrt.jpeg',
-    slug: 'dzrt',
+    slug: 'nicotine-pouches',
     description: 'DZRT collection'
   }
 ];
