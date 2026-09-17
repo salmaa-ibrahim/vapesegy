@@ -9,7 +9,7 @@
 }
 
 .header-container {
-  max-height: 40px;
+  max-height: 50px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -224,7 +224,7 @@
 
 @media (max-width: 768px) {
   .logo-image{
-    width: 50px;
+    width: 70px;
   }
 
 }

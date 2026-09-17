@@ -183,7 +183,7 @@ import { Link } from "react-router-dom";
 import CartDrawer from "./CartDrawer.jsx";
 import useCart from "../hooks/useCart.js";
 import "./Header.css";
-import vapesegylogo from "/images/logo/vapesegy-logo-3.jpeg";
+import vapesegylogo from "/images/logo/vapesegy-logo-4.jpeg";
 import config from "../data/config.js"; // ✅ استورد الـ config
 
 function Header() {
