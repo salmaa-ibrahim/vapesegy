@@ -69,7 +69,7 @@
   color: var(--white);
   border: none;
   border-radius: 8px;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 700;
   cursor: pointer;
   transition: background 0.2s ease;
@@ -393,4 +393,70 @@ select option {
   .checkout-title {
     font-size: 36px;
   }
+}
+
+
+/* ===== Shipping Options ===== */
+.shipping-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.shipping-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+  background: #fff;
+}
+
+.shipping-option:hover {
+  border-color: #c9a227;
+}
+
+.shipping-option.selected {
+  border-color: #c9a227;
+  background: #fffbea;
+  box-shadow: 0 2px 8px rgba(201, 162, 39, 0.15);
+}
+
+.shipping-option input[type="radio"] {
+  margin-top: 4px;
+  accent-color: #c9a227;
+  cursor: pointer;
+}
+
+.shipping-option-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.shipping-option-title {
+  font-weight: 600;
+  font-size: 15px;
+  color: #222;
+}
+
+.shipping-option-desc {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.4;
+}
+
+.shipping-option-price {
+  font-weight: 700;
+  font-size: 14px;
+  color: #c9a227;
+  margin-top: 2px;
 }
