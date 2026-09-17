@@ -8,8 +8,8 @@ function CartDrawer({ isOpen, onClose }) {
   const { cart, removeFromCart, updateQuantity, cartTotal } = useCart();
 
   const shippingFee = 100;
-  const orderTotal = cartTotal + shippingFee;
-
+  // const orderTotal = cartTotal + shippingFee;
+  const orderTotal = cartTotal; // Use cartTotal directly without adding shippingFee
   // Log cart changes for debugging
   useEffect(() => {
     if (isOpen) {
@@ -109,12 +109,19 @@ function CartDrawer({ isOpen, onClose }) {
             </div>
 
             <div className="cart-drawer-footer">
-              <div className="drawer-total">
+              {/* <div className="drawer-total">
                 <span className="drawer-total-label">Shipping:</span>
                 <span className="drawer-total-price">
                   LE {shippingFee.toFixed(2)}
                 </span>
-              </div>
+              </div> */}
+              {/* <div className="drawer-total">
+                <span className="drawer-total-label">Total:</span>
+                <span className="drawer-total-price">
+                  LE {orderTotal.toFixed(2)}
+                </span>
+              </div> */}
+
               <div className="drawer-total">
                 <span className="drawer-total-label">Total:</span>
                 <span className="drawer-total-price">
