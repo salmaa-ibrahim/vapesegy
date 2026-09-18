@@ -65,6 +65,85 @@
   margin-bottom: 16px;
 }
 
+/* ===== قسم باقي الكاتيجوريز ===== */
+.other-categories-section {
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 2px solid #f0f0f0;
+}
+
+.other-categories-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.other-categories-grid {
+  display: grid;
+  /* موبايل: 2 كارت جنب بعض */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.other-category-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* شادو ناعم */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 15px;
+  align-items: center;
+  text-align: center;
+}
+
+.other-category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.other-category-image {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.other-category-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.other-category-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+/* ===== التجاوب مع الشاشات الأكبر ===== */
+@media (min-width: 600px) {
+  .other-categories-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (min-width: 900px) {
+  .other-categories-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+  }
+}
+
 @media (min-width: 768px) {
   .category-page {
     padding: 32px;

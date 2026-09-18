@@ -19,9 +19,10 @@ function Home() {
       <AnnouncementBar />
       <Header />
       <HeroCarousel />
+      <ContactSection />
       <CategoriesSection />
       <DeliverySection />
-      <ContactSection />
+      
       
       {sections.map((section) => (
         <ProductSection key={section.id} section={section} />

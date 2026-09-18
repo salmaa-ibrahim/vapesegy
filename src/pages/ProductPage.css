@@ -134,6 +134,129 @@
   margin-bottom: 16px;
 }
 
+
+/* ===== Related Products Section ===== */
+.related-products-section {
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 2px solid #f0f0f0;
+}
+
+.related-products-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+/* ===== شبكة المنتجات (Grid) ===== */
+.related-products-grid {
+  display: grid;
+  /* الافتراضي: 2 كارت جنب بعض في الموبايل */
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 15px; /* مسافة بين الكروت */
+}
+
+/* ===== كارت المنتج ===== */
+.related-product-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  /* الشادو الناعم اللي طلبتيه قبل كده */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.related-product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.related-product-image {
+  width: 100%;
+  height: 160px; /* ارتفاع ثابت للصورة عشان الكروت تبان متساوية */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9;
+  padding: 10px;
+}
+
+.related-product-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.related-product-info {
+  padding: 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1; /* عشان المعلومات تاخد باقي مساحة الكارت */
+}
+
+.related-product-info h3 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 5px 0;
+  color: #333;
+  /* عشان الاسم الطويل ميكسرش التصميم */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.related-product-flavor {
+  font-size: 12px;
+  color: #777;
+  margin: 0 0 10px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.related-product-price {
+  font-size: 15px;
+  font-weight: 700;
+  color: #d32f2f; /* اللون الأحمر بتاع البراند */
+  margin: 0;
+}
+
+/* ===== التجاوب مع الشاشات الأكبر (Responsive) ===== */
+
+/* شاشات التابلت الصغيرة (من 600px وطالع): 3 كروت جنب بعض */
+@media (min-width: 600px) {
+  .related-products-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .related-product-image {
+    height: 180px;
+  }
+}
+
+/* شاشات التابلت الكبيرة واللابتوب (من 900px وطالع): 4 كروت جنب بعض */
+@media (min-width: 900px) {
+  .related-products-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+  }
+}
+
+/* شاشات الديسكتوب الكبيرة (من 1200px وطالع): 5 كروت جنب بعض */
+@media (min-width: 1200px) {
+  .related-products-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 25px;
+  }
+}
 @media (min-width: 768px) {
   .product-page {
     padding: 32px;
